@@ -1,16 +1,23 @@
+import axios from 'axios';
 import {
   REGISTER_REQUEST,
   REGISTER_SUCCESS,
   REGISTER_ERROR
 } from './constants';
 
-export function register(firstName, lastName, email, password, setErrors) {
+export function register(
+  name,
+  email,
+  password,
+  password_confirmation,
+  setErrors
+) {
   return {
     type: REGISTER_REQUEST,
-    firstName,
-    lastName,
+    name,
     email,
     password,
+    password_confirmation,
     meta: {
       setErrors
     }

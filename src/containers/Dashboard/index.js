@@ -40,15 +40,4 @@ export function Dashboard() {
   );
 }
 
-const mapStateToProps = createStructuredSelector({});
-const mapDispatchToProps = {};
-
-const withConnect = connect(
-  mapStateToProps,
-  mapDispatchToProps
-);
-
-export default compose(
-  withConnect,
-  memo
-)(Dashboard);
+export default Dashboard;

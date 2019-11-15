@@ -11,7 +11,7 @@ import { LOGIN_REQUEST } from './constants';
 export function* authorize({ email, password, meta: { setErrors } }) {
   try {
     const { accessToken: token } = yield call(request, {
-      url: '/auth/login',
+      url: 'http://127.0.0.1:8000/api/login',
       method: 'post',
       data: { email, password }
     });

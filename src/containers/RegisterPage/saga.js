@@ -9,21 +9,21 @@ import { registerSuccess, registerError } from './actions';
 import { REGISTER_REQUEST } from './constants';
 
 export function* register({
-  firstName: first_name,
-  lastName: last_name,
+  name: name,
   email,
   password,
+  password_confirmation,
   meta: { setErrors }
 }) {
   try {
     const { accessToken: token } = yield call(request, {
-      url: '/auth/register',
+      url: 'http://127.0.0.1:8000/api/register',
       method: 'post',
       data: {
-        first_name,
-        last_name,
+        name,
         email,
-        password
+        password,
+        password_confirmation
       }
     });
     yield put(registerSuccess());
