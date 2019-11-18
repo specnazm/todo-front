@@ -1,13 +1,15 @@
 import { takeLatest, call, put } from 'redux-saga/effects';
-import { removeItem } from 'utils/localStorage';
+import { removeItem, getItem } from 'utils/localStorage';
 import request from 'utils/request';
 import { fetchAuthenticatedUserSuccess, logoutSuccess } from './actions';
 import { FETCH_AUTHENTICATED_USER_REQUEST, LOGOUT_REQUEST } from './constants';
+import { statement } from '@babel/template';
 
 export function* fetchUser() {
   try {
+    console.log('ovo je token' + getItem('token'));
     const user = yield call(request, {
-      url: '/auth/me',
+      url: 'http://127.0.0.1:8000/api/profile',
       method: 'get'
     });
     yield put(fetchAuthenticatedUserSuccess(user));

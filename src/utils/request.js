@@ -27,7 +27,6 @@ export default function* request({ url, method, data, headers = {} }) {
       if (Date.now() / 1000 >= jwtDecode(token).exp) {
         token = yield call(refreshToken, token);
       }
-
       headers.Authorization = `Bearer ${token}`;
     }
 
