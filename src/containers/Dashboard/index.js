@@ -1,7 +1,4 @@
-import React, { memo } from 'react';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
-import { createStructuredSelector } from 'reselect';
+import React from 'react';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { makeStyles } from '@material-ui/core/styles';
@@ -12,7 +9,7 @@ import { useInjectSaga } from 'utils/injectSaga';
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
-
+import TodoList from 'containers/TodoList/index.js';
 const key = 'dashbaord';
 
 const useStyles = makeStyles(theme => ({
@@ -31,10 +28,11 @@ export function Dashboard() {
   return (
     <Container maxWidth="lg" className={classes.container}>
       <Helmet>
-        <title>Dashboard - React Boilerplate</title>
+        <title>Todo app</title>
       </Helmet>
       <Typography variant="h2" component="h1" gutterBottom>
         <FormattedMessage {...messages.startProjectHeader} />
+        <TodoList />
       </Typography>
     </Container>
   );

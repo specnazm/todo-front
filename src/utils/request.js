@@ -24,9 +24,9 @@ export default function* request({ url, method, data, headers = {} }) {
     let token = yield select(makeSelectToken());
 
     if (token) {
-      if (Date.now() / 1000 >= jwtDecode(token).exp) {
-        token = yield call(refreshToken, token);
-      }
+      // if (Date.now() / 1000 >= jwtDecode(token).exp) {
+      //   token = yield call(refreshToken, token);
+      // }
       headers.Authorization = `Bearer ${token}`;
     }
 
