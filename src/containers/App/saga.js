@@ -7,7 +7,6 @@ import { statement } from '@babel/template';
 
 export function* fetchUser() {
   try {
-    console.log('ovo je token' + getItem('token'));
     const user = yield call(request, {
       url: 'http://127.0.0.1:8000/api/profile',
       method: 'get'

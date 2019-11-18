@@ -17,7 +17,7 @@ export function* register({
 }) {
   try {
     const { accessToken: token } = yield call(request, {
-      url: 'http://127.0.0.1:8000/api/register',
+      url: '/api/register',
       method: 'post',
       data: {
         name,
