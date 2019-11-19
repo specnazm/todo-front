@@ -21,7 +21,7 @@ const todoReducer = (state = initialState, action) =>
       case COMPLETE_TODO_REQUEST:
         draft.todos = state.todos.map(todo => {
           if (todo.id == action.id) {
-            todo.completed = true;
+            todo.completed = !todo.completed;
           }
           return todo;
         });

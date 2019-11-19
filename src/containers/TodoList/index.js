@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useInjectSaga } from 'utils/injectSaga';
 import { listTodos } from './actions';
 import Todo from './Todo';
+import TodoForm from './Todo';
+import Button from '@material-ui/core/Button';
 import saga from './saga';
 import reducer from './reducer';
 import { useInjectReducer } from 'utils/injectReducer';
@@ -28,7 +30,7 @@ export function TodoList() {
   }, []);
 
   return (
-    <div clasName={classes.root}>
+    <div className={classes.root}>
       <ul className={classes.list}>
         {todos.map(todo => {
           return <Todo key={todo.id} todo={todo} />;

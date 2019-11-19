@@ -11,13 +11,16 @@ import {
   COMPLETE_TODO_SUCCESS
 } from './constants';
 
-export function addTodo(title, description, priority, completed) {
+export function addTodo(title, description, priority, completed, setErrors) {
   return {
     type: ADD_TODO_REQUEST,
     title,
     description,
     priority,
-    completed
+    completed,
+    meta: {
+      setErrors
+    }
   };
 }
 

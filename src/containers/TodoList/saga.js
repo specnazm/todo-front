@@ -1,15 +1,42 @@
 import { takeLatest, call, put } from 'redux-saga/effects';
+import parseApiErrorsToFormik from 'utils/parseApiErrorsToFormik';
 import request from 'utils/request';
 import {
   listTodosSucces,
   deleteTodoSuccess,
-  completeTodoSucces
+  completeTodoSucces,
+  addTodoSucces
 } from './actions';
 import {
   LIST_TODOS_REQUEST,
   DELETE_TODO_REQUEST,
-  COMPLETE_TODO_REQUEST
+  COMPLETE_TODO_REQUEST,
+  ADD_TODO_REQUEST
 } from './constants';
+
+export function* addTodo({
+  title,
+  description,
+  priority,
+  meta: { setErrors }
+}) {
+  try {
+    const response = yield call(request, {
+      url: '/api/task',
+      method: 'post',
+      data: {
+        title,
+        description,
+        priority
+      }
+    });
+    yield put(addTodoSucces(response.data));
+  } catch (error) {
+    if (error.status === 422) {
+      yield call(setErrors, parseApiErrorsToFormik(error.data.erorrs));
+    }
+  }
+}
 
 export function* listTodos() {
   try {
@@ -23,9 +50,8 @@ export function* listTodos() {
 
 export function* deleteTodo(action) {
   try {
-    const url = '/api/task/' + action.id;
     const response = yield call(request, {
-      url: url,
+      url: `/api/task/${action.id}`,
       method: 'delete'
     });
     yield put(deleteTodoSuccess());
@@ -34,9 +60,8 @@ export function* deleteTodo(action) {
 
 export function* completeTodo(action) {
   try {
-    const url = '/api/task/' + action.id;
     const response = yield call(request, {
-      url: url,
+      url: `/api/task/${action.id}`,
       method: 'patch',
       data: {
         completed: true
@@ -50,4 +75,5 @@ export default function* todoSaga() {
   yield takeLatest(LIST_TODOS_REQUEST, listTodos);
   yield takeLatest(DELETE_TODO_REQUEST, deleteTodo);
   yield takeLatest(COMPLETE_TODO_REQUEST, completeTodo);
+  yield takeLatest(ADD_TODO_REQUEST, addTodo);
 }

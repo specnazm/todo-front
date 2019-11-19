@@ -11,8 +11,8 @@ export default function createReducer(injectedReducers = {}) {
     app: appReducer,
     todos: todoReducer,
     language: languageProviderReducer,
-    router: connectRouter(history),
-    ...injectedReducers
+    router: connectRouter(history)
+    // ...injectedReducers
   });
 
   return rootReducer;

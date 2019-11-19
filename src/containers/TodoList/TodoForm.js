@@ -1,15 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { Formik, Form, Field } from 'formik';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-
-import { registerSchema } from './validations';
+import { todoSchema } from './validations';
 import messages from './messages';
-
 import { withFormikField } from 'utils/withFormikField';
 import { dispatch } from 'rxjs/internal/observable/range';
 
@@ -28,9 +25,9 @@ const useStyles = makeStyles(theme => ({
 export default function TodoForm() {
   const classes = useStyles();
 
-  const handleOnSubmit = values => {
+  const handleOnSubmit = (values, { setErrors }) => {
     const { title, description, priority } = values;
-    dispatch(addTodo(title, description, priority, completed));
+    dispatch(addTodo(title, description, priority, completed, setErrors));
   };
 
   return (

@@ -40,6 +40,7 @@ export default function Todo({ key, todo }) {
   const dispatch = useDispatch();
   const { title, description, completed, priority, id } = todo;
   const todoClass = completed ? classes.done : classes.undone;
+  const message = completed ? 'Mark as uncompleted' : 'Mark as completed';
 
   return (
     <li style={{ listStyleType: 'none' }}>
@@ -63,12 +64,10 @@ export default function Todo({ key, todo }) {
           </Typography>
         </CardContent>
         <CardActions>
-          {!completed ? (
-            <Button size="small" onClick={() => dispatch(completeTodo(id))}>
-              Mark as completed
-            </Button>
-          ) : null}
-          {!completed ? <Button size="small">Edit</Button> : null}
+          <Button size="small" onClick={() => dispatch(completeTodo(id))}>
+            {message}
+          </Button>
+          {!completed && <Button size="small">Edit</Button>}
           <Button size="small" onClick={() => dispatch(deleteTodo(id))}>
             Delete
           </Button>
