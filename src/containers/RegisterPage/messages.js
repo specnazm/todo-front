@@ -38,5 +38,9 @@ export default defineMessages({
   passwordInputLabel: {
     id: `${scope}.input_label.password`,
     defaultMessage: 'Password'
+  },
+  passwordConfirmationInputLabel: {
+    id: `${scope}.input_label.password_confirmation`,
+    defaultMessage: 'Password confirmation'
   }
 });

@@ -28,8 +28,8 @@ export default function RegisterForm({ onSubmit, isPending }) {
   const classes = useStyles();
 
   const handleOnSubmit = (values, { setErrors }) => {
-    const { firstName, lastName, email, password } = values;
-    onSubmit(firstName, lastName, email, password, setErrors);
+    const { name, email, password, password_confirmation } = values;
+    onSubmit(name, email, password, password_confirmation, setErrors);
   };
 
   return (
@@ -45,27 +45,16 @@ export default function RegisterForm({ onSubmit, isPending }) {
     >
       <Form className={classes.form}>
         <Grid container spacing={2}>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12}>
             <Field
               component={FormikTextField}
               type="text"
-              name="firstName"
+              name="name"
               variant="outlined"
               required
               fullWidth
               label={<FormattedMessage {...messages.firstNameInputLabel} />}
               autoFocus
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <Field
-              component={FormikTextField}
-              type="text"
-              name="lastName"
-              variant="outlined"
-              required
-              fullWidth
-              label={<FormattedMessage {...messages.lastNameInputField} />}
             />
           </Grid>
           <Grid item xs={12}>
@@ -88,6 +77,21 @@ export default function RegisterForm({ onSubmit, isPending }) {
               required
               fullWidth
               label={<FormattedMessage {...messages.passwordInputLabel} />}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <Field
+              component={FormikTextField}
+              type="password"
+              name="password_confirmation"
+              variant="outlined"
+              required
+              fullWidth
+              label={
+                <FormattedMessage
+                  {...messages.passwordConfirmationInputLabel}
+                />
+              }
             />
           </Grid>
         </Grid>

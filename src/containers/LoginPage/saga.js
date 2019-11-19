@@ -10,11 +10,12 @@ import { LOGIN_REQUEST } from './constants';
 
 export function* authorize({ email, password, meta: { setErrors } }) {
   try {
-    const { accessToken: token } = yield call(request, {
-      url: '/auth/login',
+    const { token } = yield call(request, {
+      url: '/api/login',
       method: 'post',
       data: { email, password }
     });
+
     yield put(loginSuccess());
     yield call(setItem, 'token', token);
     yield put(setToken(token));
