@@ -9,7 +9,7 @@ import { registerSuccess, registerError } from './actions';
 import { REGISTER_REQUEST } from './constants';
 
 export function* register({
-  name: name,
+  name,
   email,
   password,
   password_confirmation,
