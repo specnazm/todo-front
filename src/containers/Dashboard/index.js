@@ -10,6 +10,7 @@ import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
 import TodoList from 'containers/TodoList/index.js';
+import TodoForm from 'containers/TodoList/TodoForm.js';
 const key = 'dashbaord';
 
 const useStyles = makeStyles(theme => ({
@@ -32,6 +33,7 @@ export function Dashboard() {
       </Helmet>
       <Typography variant="h2" component="h1" gutterBottom>
         <FormattedMessage {...messages.startProjectHeader} />
+        <TodoForm />
         <TodoList />
       </Typography>
     </Container>

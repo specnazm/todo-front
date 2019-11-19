@@ -10,3 +10,5 @@ export const EDIT_TODO_REQUEST = `${Todo} EDIT_TODO_REQUEST`;
 export const EDIT_TODO_SUCCESS = `${Todo} EDIT_TODO_SUCCESS`;
 export const COMPLETE_TODO_REQUEST = `${Todo} COMPLETE_TODO_REQUEST`;
 export const COMPLETE_TODO_SUCCESS = `${Todo} COMPLETE_TODO_SUCCESS`;
+export const OPEN_MODAL = `${Todo} OPEN_MODAL`;
+export const CLOSE_MODAL = `${Todo} CLOSE_MODAL`;

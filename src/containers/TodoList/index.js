@@ -3,8 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useInjectSaga } from 'utils/injectSaga';
 import { listTodos } from './actions';
 import Todo from './Todo';
-import TodoForm from './Todo';
-import Button from '@material-ui/core/Button';
 import saga from './saga';
 import reducer from './reducer';
 import { useInjectReducer } from 'utils/injectReducer';
