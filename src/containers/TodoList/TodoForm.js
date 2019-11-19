@@ -114,15 +114,6 @@ export default function TodoForm() {
                   />
                 </Grid>
                 <Grid item xs={12}>
-                  {/* <Field  
-                    as="select" 
-                    name="priority"
-                    fullWidth
-                    >
-                    <option value="LOW">LOW</option>
-                    <option value="MEDIUM">Medium</option>
-                    <option value="HIGH">High</option>
-                  </Field>  */}
                   <Field
                     component={FormikTextField}
                     type="priority"
