@@ -3,27 +3,19 @@ import { defineMessages } from 'react-intl';
 export const scope = 'register_page';
 
 export default defineMessages({
-  registerButton: {
-    id: `${scope}.button.register`,
-    defaultMessage: 'Register'
+  addTodoButton: {
+    id: `${scope}.button.add`,
+    defaultMessage: 'Add new task'
   },
-  loginLink: {
-    id: `${scope}.link.login`,
-    defaultMessage: 'Already have an account? Login'
-  },
-  facebookButton: {
-    id: `${scope}.button.facebook`,
-    defaultMessage: 'Register with Facebook'
-  },
-  googleButton: {
-    id: `${scope}.button.google`,
-    defaultMessage: 'Register with Google'
+  editTodoButton: {
+    id: `${scope}.button.add`,
+    defaultMessage: 'Edit task'
   },
   titleInputLabel: {
     id: `${scope}.input_label.title`,
     defaultMessage: 'Title'
   },
-  descriptionInputField: {
+  descriptionInputLabel: {
     id: `${scope}.input_label.description`,
     defaultMessage: 'Description'
   },

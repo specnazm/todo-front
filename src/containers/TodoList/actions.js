@@ -8,7 +8,9 @@ import {
   EDIT_TODO_REQUEST,
   EDIT_TODO_SUCCESS,
   COMPLETE_TODO_REQUEST,
-  COMPLETE_TODO_SUCCESS
+  COMPLETE_TODO_SUCCESS,
+  OPEN_MODAL,
+  CLOSE_MODAL
 } from './constants';
 
 export function addTodo(title, description, priority, completed, setErrors) {
@@ -24,9 +26,10 @@ export function addTodo(title, description, priority, completed, setErrors) {
   };
 }
 
-export function addTodoSucces() {
+export function addTodoSucces(todo) {
   return {
-    type: ADD_TODO_SUCCESS
+    type: ADD_TODO_SUCCESS,
+    todo
   };
 }
 
@@ -56,10 +59,24 @@ export function deleteTodoSuccess() {
   };
 }
 
-export function editTodo(id) {
+export function editTodo(
+  title,
+  description,
+  priority,
+  completed,
+  id,
+  setErrors
+) {
   return {
     type: EDIT_TODO_REQUEST,
-    id
+    title,
+    description,
+    priority,
+    completed,
+    id,
+    meta: {
+      setErrors
+    }
   };
 }
 
@@ -70,10 +87,11 @@ export function editTodoSuccess(todo) {
   };
 }
 
-export function completeTodo(id) {
+export function completeTodo(id, completed) {
   return {
     type: COMPLETE_TODO_REQUEST,
-    id
+    id,
+    completed
   };
 }
 
@@ -81,5 +99,18 @@ export function completeTodoSucces(todo) {
   return {
     type: COMPLETE_TODO_SUCCESS,
     todo
+  };
+}
+
+export function openModal(todo = null) {
+  return {
+    type: OPEN_MODAL,
+    todo
+  };
+}
+
+export function closeModal() {
+  return {
+    type: CLOSE_MODAL
   };
 }

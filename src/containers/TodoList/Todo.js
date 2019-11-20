@@ -5,7 +5,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import { deleteTodo, completeTodo } from './actions';
+import { deleteTodo, completeTodo, openModal } from './actions';
 import { useDispatch } from 'react-redux';
 
 const key = 'todos';
@@ -64,10 +64,17 @@ export default function Todo({ key, todo }) {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small" onClick={() => dispatch(completeTodo(id))}>
+          <Button
+            size="small"
+            onClick={() => dispatch(completeTodo(id, completed))}
+          >
             {message}
           </Button>
-          {!completed && <Button size="small">Edit</Button>}
+          {!completed && (
+            <Button size="small" onClick={() => dispatch(openModal(todo))}>
+              Edit
+            </Button>
+          )}
           <Button size="small" onClick={() => dispatch(deleteTodo(id))}>
             Delete
           </Button>
